@@ -32,12 +32,17 @@ const { title } = Astro.props
 </html>
 
 <script>
+	function checkTheme() {
     const isDark = localStorage.getItem('theme') === 'dark' ||
     	(localStorage.getItem('theme') === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) 
 
     if (isDark) {
     	document.documentElement.classList.add('dark')
     }
+  }
+
+	document.addEventListener('astro:after-swap', () => checkTheme())
+  checkTheme()
 </script>
 
 <style>
