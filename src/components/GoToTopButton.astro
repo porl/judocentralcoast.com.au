@@ -1,0 +1,60 @@
+---
+import ArrowUp from '../assets/images/icons/arrow-up-circle.svg?raw'
+
+interface Props {
+    class: string,
+}
+
+const { class: classNames } = Astro.props
+---
+<goto-top-link class:list={['cursor-pointer', 'fill-white', 'opacity-50', 'hover:opacity-100', classNames]}>
+    <Fragment set:html={ArrowUp} />
+</goto-top-link>
+
+<script>
+class GoToTopLink extends HTMLElement {
+    constructor() {
+        super()
+    }
+
+    connectedCallback() {
+        this.scrollListener = (e) => this.onScroll(e)
+        document.addEventListener('scroll', this.scrollListener)
+
+        // simulate scroll to init
+        document.dispatchEvent(new Event('scroll'))
+
+        this.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}))
+    }
+
+    disconnectedCallback() {
+        document.removeEventListener('scroll', this.scrollListener)
+    }
+
+    onScroll(e) {
+        const scrolledEnough = window.scrollY > window.innerHeight
+
+        if (scrolledEnough) {
+            this.classList.add('scrolled-enough')
+        } else {
+            this.classList.remove('scrolled-enough')
+        }
+    }
+}
+
+customElements.define("goto-top-link", GoToTopLink)
+</script>
+
+<style is:global>
+goto-top-link {
+    @apply animate-bounce hidden;
+
+    &.scrolled-enough {
+        @apply block;
+    }
+
+    &:hover {
+        @apply animate-none;
+    }
+}
+</style>

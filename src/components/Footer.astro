@@ -1,0 +1,25 @@
+---
+import jccText from '../assets/images/jcc-text.png'
+
+import facebookLogo from '../assets/images/icons/facebook.svg?raw'
+import instagramLogo from '../assets/images/icons/instagram.svg?raw'
+
+import GoToTopButton from '../components/GoToTopButton.astro'
+---
+
+<footer class="flex flex-col p-4 gap-4 relative">
+  <a href="/"><img src={jccText.src} alt="Judo Central Coast Logo" class="h-8 mx-auto opacity-50 hover:opacity-100 transition-opacity duration-500" /><span class="hidden">ZBR</span></a>
+  <div>
+  </div>
+  <div class="flex flex-row justify-center gap-4">
+    <a href="" class="fill-black dark:fill-white opacity-50 hover:opacity-100 transition-opacity duration-500 h-8 w-8">
+      <Fragment set:html={facebookLogo} />
+    </a>
+    <a href="" class="fill-black dark:fill-white opacity-50 hover:opacity-100 transition-opacity duration-500 h-8 w-8">
+      <Fragment set:html={instagramLogo} />
+    </a>
+  </div>
+  <GoToTopButton class="w-16 h-16 absolute right-4 bottom-4 transition-opacity duration-500" />
+</footer>
+
+

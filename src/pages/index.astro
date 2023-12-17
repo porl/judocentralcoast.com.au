@@ -1,21 +1,14 @@
 ---
 import {ViewTransitions} from 'astro:transitions'
 import { Picture } from 'astro:assets'
+
+import Leader from '../layouts/Leader.astro'
+
 import jccLogo from '../assets/images/jcc-logo.png'
 import kugatsuLogo from '../assets/images/kugatsu.png'
 import jitakyoeiLogo from '../assets/images/jitakyoei.png'
 ---
-
-<html lang="en" class="h-full">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Judo Central Coast</title>
-    <ViewTransitions fallback="swap"/>
-	</head>
-	<body class="bg-black text-white flex flex-col gap-4 justify-center items-center h-full mx-4">
+<Leader title="Home">
     <Picture src={jccLogo} formats={['avif', 'webp', 'png']} alt="Judo Central Coast Logo" />
     <div class="flex flex-row gap-12 my-4">
     	<Picture src={kugatsuLogo} formats={['avif', 'webp', 'png']} width="256" alt="Judo Central Coast Logo" />
@@ -23,5 +16,4 @@ import jitakyoeiLogo from '../assets/images/jitakyoei.png'
     </div>
     <h1 class="text-5xl text-primary text-center">Coming Soon</h1>
     <p class="text-secondary text-xl text-center">For information please contact Shane Alvisio on 0410 044 205<br />or Paul Sheean on 0422 058 087</p>
-	</body>
-</html>
+</Leader>

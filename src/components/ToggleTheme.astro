@@ -1,0 +1,99 @@
+---
+import sunIcon from '../assets/images/icons/sun.svg?raw'
+import moonIcon from '../assets/images/icons/moon.svg?raw'
+---
+
+<toggle-theme>
+  <theme-button type="light">
+    <Fragment set:html={sunIcon} />
+  </theme-button>
+
+  <theme-button type="dark">
+    <Fragment set:html={moonIcon} />
+  </theme-button>
+</toggle-theme>
+
+<script>
+class ToggleTheme extends HTMLElement {
+  connectedCallback() {
+    this.addEventListener('theme-change', (e) => this.onThemeChange(e))
+  }
+
+  onThemeChange(e) {
+    const theme = e.detail.theme
+    if (theme) {
+      localStorage.setItem('theme', theme)
+    }
+
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }
+}
+
+class ThemeButton extends HTMLElement {
+  static observedAttributes = ["type"]
+
+  connectedCallback() {
+    this.addEventListener('click', () => this.onClick())
+    this.themeChangeListener = (e) => this.onThemeChange(e)
+    window.addEventListener('theme-change', this.themeChangeListener)
+
+    this.checkForHide()
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('theme-change', this.themeChangeListener)
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "type") {
+      this.themeType = newValue
+    }
+  }
+
+  onClick() {
+    this.dispatchEvent(new CustomEvent('theme-change', {
+      bubbles: true,
+      detail: {theme: this.themeType}
+    }))
+  }
+
+  onThemeChange(e) {
+    this.hideIfThemeMatches(e.detail.theme)
+  }
+
+  checkForHide() {
+    const theme = localStorage.getItem('theme') === 'dark' ||
+    	(localStorage.getItem('theme') === null &&
+    	  window.matchMedia &&
+    	  window.matchMedia('(prefers-color-scheme: dark)').matches
+    	) ? 'dark' : 'light'
+    
+    this.hideIfThemeMatches(theme)
+  }
+
+  hideIfThemeMatches(themeType) {
+    if (themeType === this.themeType) {
+      this.style.display = 'none'
+    } else {
+      this.style.display = 'block'
+    }
+  }
+}
+
+customElements.define('toggle-theme', ToggleTheme)
+customElements.define('theme-button', ThemeButton)
+</script>
+
+<style>
+toggle-theme {
+  @apply h-full flex flex-row justify-center items-center;
+
+  & theme-button {
+    @apply h-8 hidden;
+  }
+}
+</style>

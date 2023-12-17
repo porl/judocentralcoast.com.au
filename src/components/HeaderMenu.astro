@@ -1,0 +1,136 @@
+---
+import jccText from '../assets/images/jcc-text.png'
+import ToggleTheme from './ToggleTheme.astro'
+---
+<header-menu id="nav-header"
+    transition:name="header"
+    transition:persist
+>
+    <a class="logo" href="/">
+        <img src={jccText.src} alt="Judo Central Coast Logo" class="h-12" />
+    </a>
+
+    <div class="menu-wrapper">
+        <input class="side-menu" type="checkbox" id="nav-menu-burger"/>
+        <label for="nav-menu-burger" id="nav-menu-burger-label" class="cursor-pointer">
+            <div class="burger">
+                &#9776;
+            </div>
+            <div class="close">
+                &times;
+            </div>
+        </label>
+
+        <nav>
+            <ul>
+                <li><a href="/test">Test Pages</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><ToggleTheme /></li>
+            </ul>
+        </nav>
+    </div>
+</header-menu>
+
+<script>
+    class HeaderMenu extends HTMLElement {
+        constructor() {
+            super()
+        }
+
+        connectedCallback() {
+            this.scrollListener = (e) => this.onScroll(e)
+            document.addEventListener('scroll', this.scrollListener)
+            this.burgerCheckBox = this.querySelector('#nav-menu-burger')
+            this.burgerCheckBox.checked = false
+
+            this.burgerCheckBox.addEventListener('change', () => {
+                this.scrollIntoView()
+                if (this.burgerCheckBox.checked == true) {
+                    document.body.classList.add('no-scroll')
+                } else {
+                    document.body.classList.remove('no-scroll')
+                }
+            })
+
+            // simulate scroll to init
+            document.dispatchEvent(new Event('scroll'))
+
+            const links = this.querySelectorAll("a")
+            links.forEach((e) => e.addEventListener('click', () => this.burgerCheckBox.checked = false))
+        }
+
+        disconnectedCallback() {
+            document.removeEventListener('scroll', this.scrollListener)
+        }
+
+        onScroll(e) {
+            const atTop = this.getBoundingClientRect().top < 1
+
+            if (atTop) {
+                this.classList.add('at-top')
+            } else {
+                this.classList.remove('at-top')
+            }
+        }
+    }
+    customElements.define('header-menu', HeaderMenu)
+</script>
+
+<style>
+    header-menu {
+        @apply flex sticky top-0 z-30 justify-center sm:justify-start items-center p-4 h-28 transition-all duration-1000;
+
+        .logo {
+            @apply opacity-0 z-40 transition-opacity duration-[2000ms] delay-1000 w-0;
+        }
+
+        &.at-top {
+            @apply bg-bg-light dark:bg-bg-dark bg-opacity-90;
+
+            .logo {
+                @apply opacity-100 w-auto;
+            }
+        }
+
+        #nav-menu-burger {
+            @apply hidden;
+
+            & ~ label {
+                @apply flex sm:hidden absolute top-0 left-0 p-4 h-28 w-12 text-4xl flex-col justify-center items-center text-center z-50;
+                & .close {
+                    @apply hidden;
+                }
+            }
+
+            &:checked {
+                & ~ label {
+                    .burger {
+                        @apply hidden;
+                    }
+                    .close {
+                        @apply block;
+                    }
+                }
+
+                & ~ nav {
+                    @apply max-sm:block;
+                }
+            }
+        }
+
+        & nav {
+            @apply hidden sm:flex sm:absolute sm:right-0 sm:top-0
+            sm:h-full sm:flex-col sm:justify-end
+            text-2xl sm:py-2 sm:px-4
+
+            max-sm:bg-black max-sm:h-[calc(100vh-7rem)] max-sm:w-screen
+            max-sm:absolute max-sm:left-0 max-sm:top-28
+            ;
+
+            & ul {
+                @apply flex flex-col sm:flex-row gap-8 sm:gap-4 max-sm:p-8;
+            }
+        }
+    }
+</style>
+

@@ -1,0 +1,53 @@
+---
+import jccLogo from '../assets/images/jcc-logo.png'
+import ArrowDown from '../assets/images/icons/arrow-down-circle.svg?raw'
+---
+<leader-screen class="h-screen flex relative justify-center items-center -mb-28">
+    <img src={jccLogo.src} />
+    <a id="scroll-down" href="#nav-header" class="absolute bottom-32 w-16 h-16">
+        <Fragment set:html={ArrowDown} />
+    </a>
+</leader-screen>
+
+<script>
+    class LeaderScreen extends HTMLElement {
+        constructor() {
+            super()
+        }
+
+        connectedCallback() {
+            this.scroller = this.querySelector("#scroll-down")
+
+            this.scroller.addEventListener('click', (e) => {
+                document.getElementById("nav-header").scrollIntoView({behavior: 'smooth'})
+                e.preventDefault();
+            })
+
+            this.timer = setTimeout(() => this.fadeIn(), 2500)
+        }
+
+        disconnectedCallback() {
+            clearTimeout(this.timer)
+        }
+
+        fadeIn() {
+            this.scroller.classList.add("ready")
+        }
+    }
+
+    customElements.define('leader-screen', LeaderScreen)
+</script>
+
+<style>
+#scroll-down {
+    @apply animate-bounce opacity-0 transition-opacity duration-[5000ms];
+
+    &:hover, &.ready:hover {
+        @apply animate-none opacity-100 duration-500;
+    }
+
+    &.ready {
+        @apply opacity-50;
+    }
+}
+</style>
