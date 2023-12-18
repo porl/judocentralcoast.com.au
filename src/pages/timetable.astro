@@ -1,8 +1,8 @@
 ---
 import Page from '../layouts/Page.astro'
 
-import {classTest} from '../assets/data/timetable.ts'
+import Timetable from '../assets/data/Timetable.ts'
 ---
 <Page title="Timetable">
-    <p class="">timetable test {classTest.classType.name}</p>
+    <p class="">timetable test {Timetable.classType.name} - {Timetable.day}</p>
 </Page>
