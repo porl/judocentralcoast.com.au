@@ -23,10 +23,10 @@ import ToggleTheme from './ToggleTheme.astro'
 
         <nav>
             <ul>
-                <li><a href="/">Timetable</a></li>
+                <li><a href="/timetable">Timetable</a></li>
                 <li><a href="/">Locations</a></li>
                 <li><a href="/">Resources</a></li>
-                <li><a href="/">Contact Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
                 <li><ToggleTheme /></li>
             </ul>
         </nav>
@@ -123,7 +123,7 @@ import ToggleTheme from './ToggleTheme.astro'
         & nav {
             @apply hidden md:flex md:absolute md:right-0 md:top-0
             md:h-full md:flex-col md:justify-end
-            text-2xl md:py-2 md:px-4
+            text-xl md:py-2 md:px-4
 
             max-md:bg-bg-light max-md:dark:bg-bg-dark max-md:h-[calc(100vh-7rem)] max-md:w-screen
             max-md:absolute max-md:left-0 max-md:top-28

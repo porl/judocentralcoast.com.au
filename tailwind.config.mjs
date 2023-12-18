@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin');
 
 export default {
   darkMode: 'class',
@@ -14,5 +15,11 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addBase }) {
+      addBase({
+        'html': { fontSize: "20px" },
+      })
+    }),
+  ],
 }

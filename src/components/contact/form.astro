@@ -1,0 +1,88 @@
+---
+import spinner from '../../assets/images/icons/spinner.svg?raw'
+
+interface Props {
+	data: object;
+	errors: object;
+}
+
+const { data, errors } = Astro.props;
+---
+<div>
+    <h1>Send Us Your Enquiry</h1>
+    <form id="contact-form" method="POST" data-astro-reload>
+        <label for="name">Name:
+            <input type="text" name="name" class:list={{error: errors.name}} value={data.name} placeholder="Your Name" id="name" required>
+            {errors.name && <p class="form-error">{errors.name}</p>}
+        </label>
+
+        <label for="phone">Phone:
+            <input type="tel" name="phone" class:list={{error: errors.phone}} value={data.phone} placeholder="#### ### ###" id="phone" required>
+            {errors.phone && <p class="form-error">{errors.phone}</p>}
+        </label>
+
+        <label for="email">Email:
+            <input type="text" name="email" class:list={{error: errors.email}} value={data.email} placeholder="youremail@gmail.com" id="email" required>
+            {errors.email && <p class="form-error">{errors.email}</p>}
+        </label>
+
+        <label for="enquiry">Enquiry:
+            <textarea name="enquiry" class:list={{error: errors.enquiry}} placeholder="What is your enquiry?" id="enquiry" rows="10" required>{data.enquiry}</textarea>
+            {errors.enquiry && <p class="form-error">{errors.enquiry}</p>}
+        </label>
+
+        <button id="submit-button" type="submit">Submit Your Enquiry</button>
+    </form>
+</div>
+<div id="page-spinner">
+    <div class="h-24 aspect-square animate-[spin_3s_linear_infinite] fill-white opacity-75">
+        <Fragment set:html={spinner} />
+    </div>
+</div>
+
+<style>
+form {
+    @apply flex flex-col gap-4;
+
+    & label {
+        @apply w-full;
+
+        & .form-error {
+            @apply text-red-500;
+        }
+
+        & input[type=text], & input[type=email], & input[type=tel], & textarea {
+            @apply w-full text-black p-4 bg-white bg-opacity-75;
+
+            &.error {
+                @apply bg-red-200;
+            }
+        }
+
+    }
+
+    & button {
+        @apply border border-white bg-white bg-opacity-75 text-black p-4 block ml-auto;
+
+        &:disabled {
+            @apply opacity-25;
+        }
+    }
+}
+
+#page-spinner {
+    @apply flex top-0 left-0 absolute w-full h-full justify-center items-center
+        bg-black bg-opacity-75 -z-50 opacity-0 transition-opacity duration-1000 delay-500;
+}
+</style>
+
+<script>
+const form = document.getElementById('contact-form')
+const button = document.getElementById('submit-button')
+const spinner = document.getElementById('page-spinner')
+form && form.addEventListener('submit', (ev) => {
+    button.disabled = true
+    spinner.style.zIndex = 100
+    spinner.style.opacity = 1
+})
+</script>

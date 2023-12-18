@@ -1,0 +1,10 @@
+---
+const contactPhone = import.meta.env.CONTACT_PHONE
+const contactEmail = import.meta.env.CONTACT_EMAIL
+---
+
+<div class="flex-grow flex flex-col justify-center items-center">
+    <h1>Thank you!</h1>
+    <p>Thank you for contacting us. One of our representatives will get back to you as soon as possible.</p>
+    <p>Alternatively, please call us on <a href=`tel:${contactPhone}`>{contactPhone}</a> or email us at <a href=`mailto:${contactEmail}`>{contactEmail}</a>.
+</div>

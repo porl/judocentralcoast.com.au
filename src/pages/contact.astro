@@ -1,0 +1,130 @@
+---
+    export const prerender = false
+
+    import nodemailer from 'nodemailer'
+
+    import Page from '../layouts/Page.astro'
+
+    import ContactForm from '../components/contact/form.astro'
+    import ContactDetails from '../components/contact/details.astro'
+    import ThankYou from '../components/contact/thank-you.astro'
+    import Error from '../components/contact/error.astro'
+
+    function isValidEmail(email) {
+        // extremely simple regex to ensure something@domain
+        const validEmailRegex = /^\S+@\S+$/
+
+        return validEmailRegex.test(email)
+    }
+
+    const errors = {
+        name: "",
+        phone: "",
+        email: "",
+        enquiry: "",
+    }
+
+    const data = {
+        name: "",
+        phone: "",
+        email: "",
+        enquiry: "",
+    }
+
+    let submitted = false
+    let submitError = false
+
+    if (Astro.request.method === "POST") {
+
+        try {
+            const formData = await Astro.request.formData()
+
+            data.name = formData.get("name")
+            data.phone = formData.get("phone")
+            data.email = formData.get("email")
+            data.enquiry = formData.get("enquiry")
+
+            if (typeof data.name !== "string" || data.name.length < 1) {
+                errors.name = "Please enter a name.";
+            }
+
+            if (typeof data.phone !== "string" || data.phone.length < 1) {
+                errors.phone = "Please enter a phone number.";
+            }
+
+            if (typeof data.email !== "string" || !isValidEmail(data.email)) {
+                errors.email = "Please enter a valid email.";
+            }
+
+            if (typeof data.enquiry !== "string" || data.enquiry.length < 1) {
+                errors.enquiry = "Please enter an enquiry.";
+            }
+
+            const hasErrors = Object.values(errors).some(msg => msg)
+
+            if (!hasErrors) {
+                console.log("Contact Form Submitted - Mailing")
+
+                const mailTransport = nodemailer.createTransport({
+                    host: import.meta.env.SMTP_HOST,
+                    port: import.meta.env.SMTP_PORT,
+                    secure: false,
+                    auth: {
+                        user: import.meta.env.SMTP_USER,
+                        pass: import.meta.env.SMTP_PASS,
+                    },
+                })
+
+                const messageText = `Customer Name: ${data.name}\n`
+                    + `Phone: ${data.phone}\n`
+                    + `Email: ${data.email}\n`
+                    + `Enquiry: ${data.enquiry}\n`
+
+                const messageHTML = `<h 1>Website Enquiry from ${data.name}</h1>`
+                    + `<ul>`
+                    + `<li>Name: ${data.name}</li>`
+                    + `<li>Phone: ${data.phone}</li>`
+                    + `<li>Email: ${data.email}</li>`
+                    + `<li>Enquiry: <pre>${data.enquiry}</pre></li>`
+                    + `</ul>`
+
+                const message = {
+                    from: import.meta.env.SMTP_FROM,
+                    to: import.meta.env.CONTACT_EMAIL,
+                    subject: `Website Enquiry from ${data.name}`,
+                    replyTo: data.email,
+                    text: messageText,
+                    html: messageHTML,
+                }
+
+                try {
+                    const mail = await mailTransport.sendMail(message)
+                } catch (e) {
+                    console.error(e)
+                    submitError = true
+                }
+                
+                submitted = true
+            }
+
+        } catch(error) {
+            if (error instanceof Error) console.error(error.message)
+        }
+
+    }
+---
+<Page title="Contact Us">
+{submitError ? 
+    <Error />
+:
+    submitted ?
+        <ThankYou />
+    :
+        <div class="w-full max-w-screen-xl flex flex-col md:grid md:grid-cols-2 gap-12 md:gap-4">
+            <ContactDetails />
+            <ContactForm data={data} errors={errors} />
+        </div>
+    
+}
+</Page>
+
