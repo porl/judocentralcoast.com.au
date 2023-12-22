@@ -4,12 +4,10 @@ import { Picture } from 'astro:assets'
 
 import Leader from '../layouts/Leader.astro'
 
-import jccLogo from '../assets/images/jcc-logo.png'
 import kugatsuLogo from '../assets/images/kugatsu.png'
 import jitakyoeiLogo from '../assets/images/jitakyoei.png'
 ---
 <Leader title="Home">
-    <Picture src={jccLogo} formats={['avif', 'webp', 'png']} alt="Judo Central Coast Logo" />
     <div class="flex flex-row gap-12 my-4">
     	<Picture src={kugatsuLogo} formats={['avif', 'webp', 'png']} width="256" alt="Judo Central Coast Logo" />
     	<Picture src={jitakyoeiLogo} formats={['avif', 'webp', 'png']} width="256" alt="Judo Central Coast Logo" />
