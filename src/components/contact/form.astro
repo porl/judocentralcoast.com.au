@@ -9,7 +9,6 @@ interface Props {
 const { data, errors } = Astro.props;
 ---
 <div>
-    <h1>Send Us Your Enquiry</h1>
     <form id="contact-form" method="POST" data-astro-reload>
         <label for="name">Name:
             <input type="text" name="name" class:list={{error: errors.name}} value={data.name} placeholder="Your Name" id="name" required>
