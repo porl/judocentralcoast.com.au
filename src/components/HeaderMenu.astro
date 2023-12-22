@@ -25,6 +25,7 @@ import ToggleTheme from './ToggleTheme.astro'
             <ul>
                 <li><a href="/timetable">Timetable</a></li>
                 <li><a href="/">Locations</a></li>
+                <li><a href="/pricing">Pricing</a></li>
                 <li><a href="/">Resources</a></li>
                 <li><a href="/contact">Contact Us</a></li>
                 <li><ToggleTheme /></li>
@@ -80,7 +81,8 @@ import ToggleTheme from './ToggleTheme.astro'
 
 <style>
     header-menu {
-        @apply bg-bg-light dark:bg-bg-dark flex sticky top-0 z-30 justify-center md:justify-start items-center p-4 h-28;
+        @apply bg-bg-light dark:bg-bg-dark flex sticky top-0 z-30
+            justify-center md:justify-start p-4 h-28;
 
         .logo {
             @apply opacity-0 z-40 transition-opacity duration-[2000ms] delay-1000 w-0;
