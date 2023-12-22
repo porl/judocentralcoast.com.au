@@ -7,18 +7,25 @@ const contactPhone = import.meta.env.CONTACT_PHONE
 const contactEmail = import.meta.env.CONTACT_EMAIL
 ---
 
-<div class="flex flex-col">
-    <div class="flex flex-col gap-4 justify-start">
-        <a href=`tel:${contactPhone}` class="fill-white flex flex-row gap-4 items-center">
-            <div class="h-8 w-8"><Fragment set:html={phoneIcon} /></div>
-            <p>{contactPhone}</p>
-        </a>
-        <div class="fill-white flex flex-row gap-4 items-center">
-            <div class="h-8 w-8"><Fragment set:html={globeIcon} /></div>
+<div class="flex flex-col gap-12 justify-start">
+    <a href=`tel:${contactPhone}` class="fill-white flex flex-row gap-4">
+        <div class="h-8 w-8"><Fragment set:html={phoneIcon} /></div>
+        <p>{contactPhone}</p>
+    </a>
+    <div class="fill-white flex flex-row gap-4">
+        <div class="h-8 w-8"><Fragment set:html={globeIcon} /></div>
+        <div class="flex flex-col gap-4">
             <div>
-                <p>ADDRESS</p>
-                <p>GOES</p>
-                <p>HERE</p>
+                <p class="font-bold">Kugatsu Erina Dojo</p>
+                <p>The Lifestyle Building</p>
+                <p>3 Chiltern Road</p>
+                <p>Erina NSW 2250</p>
+            </div>
+            <div>
+                <p class="font-bold">Jita Kyoei Niagara Park Dojo</p>
+                <p>Niagara Park Stadium</p>
+                <p>18 Washington Ave</p>
+                <p>Niagara Park NSW 2250</p>
             </div>
         </div>
     </div>
