@@ -1,8 +1,237 @@
 ---
 import Page from '../layouts/Page.astro'
-
-import Timetable from '../assets/data/Timetable.ts'
 ---
 <Page title="Timetable">
-    <p class="">timetable test {Timetable.classType.name} - {Timetable.day}</p>
+    <div class="week">
+        <div class="day">
+            <h1>Monday</h1>
+            <ul>
+                <li>
+                    <div class="time">12:00pm - 1:30pm</div>
+                    <div class="session erina adults">
+                        <div>Adults and Teens</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">4:00pm - 5:00pm</div>
+                    <div class="session erina mini">
+                        <div>Mini Kids (5 - 8 years)</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">5:00pm - 6:00pm</div>
+                    <div class="session erina kids">
+                        <div>Kids (9 - 12 years)</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="day">
+            <h1>Tuesday</h1>
+            <ul>
+                <li>
+                    <div class="time">6:00pm - 7:30pm</div>
+                    <div class="session erina teen-boys">
+                        <div>Teen Boys</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">7:30pm - 9:00pm</div>
+                    <div class="session erina adults">
+                        <div>Tuesday Titans Judo Open Training</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="day">
+            <h1>Wednesday</h1>
+            <ul>
+                <li>
+                    <div class="time">10:00am - 11:30am</div>
+                    <div class="session erina adults">
+                        <div>Adults and Teens</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">4:00pm - 5:00pm</div>
+                    <div class="session erina mini">
+                        <div>Mini Kids (5 - 8 years)</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">5:00pm - 6:00pm</div>
+                    <div class="session erina kids">
+                        <div>Kids (9 - 12 years)</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">6:30pm - 8:00pm</div>
+                    <div class="session niagara-park open-mat">
+                        <div>Judo and Jiu Jitsu Open Mat</div>
+                        <div class="location">Niagara Park</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="day">
+            <h1>Thursday</h1>
+            <ul>
+                <li>
+                    <div class="time">5:00pm - 6:00pm</div>
+                    <div class="session erina teen-girls">
+                        <div>Teen Girls</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">7:30pm - 9:00pm</div>
+                    <div class="session erina adults">
+                        <div>Adults and Teens</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="day">
+            <h1>Friday</h1>
+            <ul>
+                <li>
+                    <div class="time">10:00am - 11:30am</div>
+                    <div class="session erina adults">
+                        <div>Adults and Teens</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">5:30pm - 6:30pm</div>
+                    <div class="session niagara-park mixed-kids">
+                        <div>Mini Kids/Kids Combined (5-12 years)</div>
+                        <div>Niagara Park</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">6:30pm - 8:00pm</div>
+                    <div class="session niagara-park adults">
+                        <div>Adults and Teens</div>
+                        <div>Niagara Park</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="day">
+            <h1>Saturday</h1>
+            <ul>
+                <li>
+                    <div class="time">9:00am - 10:00am</div>
+                    <div class="session erina mini">
+                        <div>Mini Kids (5 - 8 years)</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">10:00am - 11:00am</div>
+                    <div class="session erina kids">
+                        <div>Kids (9 - 12 years)</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="time">3:00pm - 5:00pm</div>
+                    <div class="session erina adults">
+                        <div>Adults and Teens</div>
+                        <div>Erina</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="day">
+            <h1>Sunday</h1>
+            <ul>
+                <li>
+                    <div class="time">6:30pm - 8:00pm</div>
+                    <div class="session niagara-park open-mat">
+                        <div>Judo and Jiu Jitsu Open Mat</div>
+                        <div class="location">Erina</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </Page>
+
+<style>
+.week {
+    @apply flex flex-col gap-12 w-full;
+
+    .day {
+        @apply w-full max-w-2xl m-auto flex flex-col gap-2;
+
+        h1 {
+            @apply text-center sm:text-left font-bold text-2xl;
+        }
+
+        ul {
+            @apply sm:ml-8 flex flex-col gap-6 sm:gap-2;
+
+            li {
+                @apply flex flex-col sm:flex-row gap-2 w-full;
+
+                .time {
+                    @apply font-bold sm:flex-none sm:w-36;
+                }
+
+                .session {
+                    @apply flex-grow text-center p-2 flex flex-col gap-2;
+
+                    .location {
+                        @apply font-bold text-xl;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.mini {
+    @apply bg-sky-400 dark:bg-sky-900;
+}
+
+.kids {
+    @apply bg-emerald-400 dark:bg-emerald-900;
+}
+
+.mixed-kids {
+    @apply bg-gradient-to-r from-sky-400 to-emerald-400 dark:from-sky-900 dark:to-emerald-900;
+}
+
+.teen-boys {
+    @apply bg-amber-400 dark:bg-amber-900;
+}
+
+.teen-girls {
+    @apply bg-pink-400 dark:bg-pink-900;
+}
+
+.adults {
+    @apply bg-red-400 dark:bg-red-900;
+}
+
+.open-mat {
+    @apply bg-purple-400 dark:bg-purple-900;
+}
+
+</style>
