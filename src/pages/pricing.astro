@@ -2,12 +2,21 @@
 import Page from '../layouts/Page.astro'
 ---
 <Page title="Pricing">
-    <p>At Judo Central Coast, we believe in transparency and openness.</p>
-    <p>Our prices are listed below. For any questions, please don't hesitate
-    to <a href="/contact">contact us</a>.</p>
+    <section>
+        <p>At Judo Central Coast, we believe in transparency and openness.</p>
+        <p>Our prices are listed below. For any questions, please don't hesitate
+        to <a href="/contact">contact us</a>.</p>
+    </section>
     <section>
         <h1>Mat Fees</h1>
         <ul>
+            <li>
+                <h2>Trial Class</h2>
+                <div class="free">
+                    <p>Your first class is on us!</p>
+                    <p class="price">FREE</p>
+                </div>
+            </li>
             <li>
                 <h2>Juniors</h2>
                 <div class="monthly">
@@ -38,6 +47,25 @@ import Page from '../layouts/Page.astro'
     </section>
     <section>
         <h1>Registration (Judo NSW)</h1>
+        <p>
+            In order to cover insurance, allow you to visit other clubs,
+            be eligible for a nationally-accredited grade or enter competitions,
+            you will need a Judo NSW yearly membership.
+        </p>
+        <p>
+            If this is your first time trying Judo, you can sign up for a FREE four
+            week trial membership after visiting us for your free trial class.
+        </p>
+        <p>
+            Prices at the time of writing are $150 for Juniors and $190 for Adults per year.
+        </p>
+        <p>
+            This membership can be obtained via the
+            <a href="https://www.revolutionise.com.au/judonsw/clubs-rego/">Judo NSW portal</a>.
+        </p>
+        <p>
+            If you have any questions please feel free to <a href="/contact">contact us</a>.
+        </p>
     </section>
     <section>
         <h1>Other Costs</h1>
@@ -50,7 +78,7 @@ a {
 }
 
 section {
-    @apply flex flex-col gap-12 w-full max-w-2xl mx-auto;
+    @apply flex flex-col gap-2 w-full max-w-2xl mx-auto;
 
     h1 {
         @apply text-center sm:text-left font-bold text-2xl;
@@ -75,6 +103,10 @@ section {
             }
         }
     }
+}
+
+.free {
+    @apply bg-lime-400 dark:bg-lime-900;
 }
 
 .monthly {
