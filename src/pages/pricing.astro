@@ -49,7 +49,7 @@ import Page from '../layouts/Page.astro'
         <h1>Registration (Judo NSW)</h1>
         <p>
             In order to cover insurance, allow you to visit other clubs,
-            be eligible for a nationally-accredited grade or enter competitions,
+            be eligible for a nationally accredited grade or enter competitions,
             you will need a Judo NSW yearly membership.
         </p>
         <p>
@@ -69,6 +69,20 @@ import Page from '../layouts/Page.astro'
     </section>
     <section>
         <h1>Other Costs</h1>
+
+        <h4>Gradings</h4>
+        <p>$40 - includes belt and nationally accredited grading certificate.</p>
+
+        <h4>Uniforms</h4>
+        <p>
+            We do not require "club official" uniforms but recommend those sold by
+            <a href="https://www.essimo.com.au/">Essimo Australia</a>. Note that
+            you do not need this for your first few classes to try things out.
+        </p>
+        <p>
+            For kid's sizes, these are usually between $50 to $100 and for adults usually
+            between $75 to $150 depending on size and durability.
+        </p>
     </section>
 </Page>
 
@@ -82,6 +96,10 @@ section {
 
     h1 {
         @apply text-center sm:text-left font-bold text-2xl;
+    }
+
+    h4 {
+        @apply font-bold;
     }
 
     ul {
