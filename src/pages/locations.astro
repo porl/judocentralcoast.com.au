@@ -1,0 +1,72 @@
+---
+import Page from '../layouts/Page.astro'
+---
+<Page title="Locations">
+    <section>
+        <p>blahblah</p>
+    </section>
+    <section>
+        <h1>Erina (Kugatsu) Dojo</h1>
+        <ul>
+            <li>
+                <h4>Address</h4>
+                <div>
+                    <p>The Lifestyle Building</p>
+                    <p>3 Chiltern Road</p>
+                    <p>Erina NSW 2250</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <h1>Niagara Park (Jita Kyoei) Dojo</h1>
+        <ul>
+            <li>
+                <h4>Address</h4>
+                <div>
+                    <p>Niagara Park Stadium</p>
+                    <p>18 Washington Ave</p>
+                    <p>Niagara Park NSW 2250</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+</Page>
+
+<style>
+a {
+    @apply text-primary;
+}
+
+section {
+    @apply flex flex-col gap-4 w-full max-w-2xl mx-auto mb-6;
+
+    h1 {
+        @apply text-center sm:text-left font-bold text-2xl;
+    }
+
+    h4 {
+        @apply font-bold;
+    }
+
+    ul {
+        @apply sm:ml-8 flex flex-col gap-6 sm:gap-4;
+
+        li {
+            @apply flex flex-col sm:flex-row gap-6 w-full;
+
+            h2 {
+                @apply font-bold sm:flex-none sm:w-36 text-xl;
+            }
+
+            div {
+                @apply flex-1 flex flex-col gap-2;
+
+                .price {
+                    @apply font-bold text-xl;
+                }
+            }
+        }
+    }
+}
+</style>
