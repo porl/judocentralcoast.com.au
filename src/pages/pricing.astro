@@ -9,7 +9,7 @@ import Page from '../layouts/Page.astro'
     </section>
     <section>
         <h1>Mat Fees</h1>
-        <ul>
+        <ul class="prices">
             <li>
                 <h2>Trial Class</h2>
                 <div class="free">
@@ -70,19 +70,28 @@ import Page from '../layouts/Page.astro'
     <section>
         <h1>Other Costs</h1>
 
-        <h4>Gradings</h4>
-        <p>$40 - includes belt and nationally accredited grading certificate.</p>
+        <ul class="text-list">
+            <li>
+                <h4>Gradings</h4>
+                <p>$40 - includes belt and nationally accredited grading certificate.</p>
+            </li>
+            <li>
+                <h4>Uniforms</h4>
+                <div>
+                    <p>
+                        We do not require "club official" uniforms but recommend those sold by
+                        <a href="https://www.essimo.com.au/">Essimo Australia</a>. Note that
+                        you do not need this for your first few classes to try things out.
+                    </p>
+                    <p>
+                        For kid's sizes, these are usually between $50 to $100 and for adults usually
+                        between $75 to $150 depending on size and durability.
+                    </p>
+                </div>
+            </li>
+        </ul>
 
-        <h4>Uniforms</h4>
-        <p>
-            We do not require "club official" uniforms but recommend those sold by
-            <a href="https://www.essimo.com.au/">Essimo Australia</a>. Note that
-            you do not need this for your first few classes to try things out.
-        </p>
-        <p>
-            For kid's sizes, these are usually between $50 to $100 and for adults usually
-            between $75 to $150 depending on size and durability.
-        </p>
+
     </section>
 </Page>
 
@@ -92,7 +101,7 @@ a {
 }
 
 section {
-    @apply flex flex-col gap-2 w-full max-w-2xl mx-auto;
+    @apply flex flex-col gap-4 w-full max-w-2xl mx-auto mb-6;
 
     h1 {
         @apply text-center sm:text-left font-bold text-2xl;
@@ -102,7 +111,7 @@ section {
         @apply font-bold;
     }
 
-    ul {
+    ul.prices {
         @apply sm:ml-8 flex flex-col gap-6 sm:gap-2;
 
         li {
@@ -114,6 +123,26 @@ section {
 
             div {
                 @apply flex-1 text-center p-2 flex flex-col gap-2;
+
+                .price {
+                    @apply font-bold text-xl;
+                }
+            }
+        }
+    }
+
+    ul.text-list {
+        @apply sm:ml-8 flex flex-col gap-6 sm:gap-4;
+
+        li {
+            @apply flex flex-col sm:flex-row gap-6 w-full;
+
+            h2 {
+                @apply font-bold sm:flex-none sm:w-36 text-xl;
+            }
+
+            div {
+                @apply flex-1 flex flex-col gap-2;
 
                 .price {
                     @apply font-bold text-xl;
