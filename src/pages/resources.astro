@@ -1,0 +1,21 @@
+---
+import Page from '../layouts/Page.astro'
+import Techniques from '../assets/files/100 kodokan techniques.pdf'
+---
+
+<Page title="Resources">
+  <section>
+    <ul>
+      <li><a href="https://judonsw.com.au/">Judo NSW Main Website</a></li>
+      <li><a href="https://ausjudo.com.au/">Judo Australia Main Website</a></li>
+      <li><a href="https://rise.articulate.com/share/mgkGB9ClG1C3dXe9_6BgM0jx6euzwGtr#/">100 Kodokan Techniques (online with videos)</a></li>
+      <li><a href={Techniques}>100 Kodokan Techniques (Kodokan PDF)</a></li>
+    </ul>
+  </section>
+</Page>
+
+<style>
+a {
+  @apply text-primary;
+}
+</style>
