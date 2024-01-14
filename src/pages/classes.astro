@@ -1,7 +1,230 @@
 ---
 import Page from '../layouts/Page.astro'
+
+import { Picture } from 'astro:assets'
+
+import adults from '../assets/images/photos/adults.jpg'
+import kids from '../assets/images/photos/kids.avif'
+import jiuJitsu from '../assets/images/photos/jiu_jitsu.avif'
+import openMat from '../assets/images/photos/open_mat.avif'
+import privateClass from '../assets/images/photos/private.avif'
+import teenBoys from '../assets/images/photos/teen_boys.jpg'
+import teenGirls from '../assets/images/photos/teen_girls.jpg'
+import titans from '../assets/images/photos/titans.gif'
 ---
 
 <Page title="Classes">
-  <div>Classes</div>
+  <section id="adults">
+    <h1>Judo for Adults and Teens</h1>
+    <div>
+      <Picture src={adults} formats={['avif', 'webp', 'png']}
+        width="1024" alt="Adults Training"
+      />
+      <div>
+        <p>
+          Catering to both recreational and competition players, we strive for an
+          enjoyable and safe environment in which to train the sport and martial art
+          aspects of Judo.
+        </p>
+        <p>
+          In this class you will learn to throw others, fall safely, control others on
+          the ground through pins and submissions (joint locks and strangles). As with
+          everything we do, the emphasis is on the safety and welfare of each other, so
+          these valuable skills are able to be learnt in a pressure-free environment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kids">
+    <h1>Judo for Kids</h1>
+    <div>
+      <Picture src={kids} formats={['avif', 'webp', 'png']}
+        width="1024" alt="Kids Training"
+      />
+      <div>
+        <p>
+          Tailored especially for kids 12 and under, the focus is on learning valuable
+          skills through fun. We have separate classes for 5-8yrs and 9-12yrs as
+          well as a combined 5-12yrs class. Kids over 12 years are still welcome.
+        </p>
+        <p>
+          In these classes, children will learn essential skills for self defence,
+          co-ordination, fitness as well as social skills as they interact physically
+          with other kids. They will learn to throw, fall safely as well as co-ordinate
+          on the ground whilst they try to hold each other down.
+        </p>
+        <p>
+          Judo is one of the best martial arts and sports for children as it allows them
+          to "wrestle" in a safe and technical environment which is well known to help in
+          development of both the body and mind of the child.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="teen-boys">
+    <h1>Judo Teen Boys</h1>
+    <div>
+      <Picture src={teenBoys} formats={['avif', 'webp', 'png']}
+        width="1024" alt="Teen Boys Training"
+      />
+      <div>
+        <p>
+          Tailored specifically for the energetic spirit of teenage boys, this class provides
+          a dynamic blend of physical fitness and mental focus through the art of judo.
+        </p>
+        <p>
+          Participants learn essential self-defense techniques, enhance their agility, and build
+          a strong foundation of respect and camaraderie. Judo isn't just about mastering throws
+          and holds; it's about fostering confidence, resilience, and strategic thinking.
+        </p>
+        <p>
+          As participants progress through the program, they not only gain valuable martial arts
+          skills but also develop a sense of achievement and a positive mindset that extends
+          beyond the dojo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="teen-girls">
+    <h1>Judo Teen Girls</h1>
+    <div>
+      <Picture src={teenGirls} formats={['avif', 'webp', 'png']}
+        width="1024" alt="Teen Girls Training"
+      />
+      <div>
+        <p>
+          Discover the art of judo as a means of self-defense, self-expression, and personal
+          growth.
+        </p>
+        <p>
+          This class is carefully crafted to cater to the unique needs and interests of teenage
+          girls; providing a space where they can build strength, learn valuable self-defense
+          techniques, and develop a sense of camaraderie with their peers.
+        </p>
+        <p>
+          Beyond the physical skills, participants gain a deep understanding of discipline,
+          focus, and the importance of mutual respect, fostering a positive mindset that extends
+          far beyond the dojo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="jiu-jitsu">
+    <h1>Jiu Jitsu for Adults and Teens</h1>
+    <div>
+      <Picture src={jiuJitsu} formats={['avif', 'webp', 'png']}
+        width="1024" alt="Jiu Jitsu Training"
+      />
+      <div>
+        <p>
+          This class is focused on the core components of Jiu Jitsu.
+        </p>
+        <p>
+          These are the techniqes and concepts that anyone can learn that build a solid
+          framework with which to expand into any specialised "style" a student may wish.
+        </p>
+        <p>
+          Focusing mostly on techniques that are useful in both the sportive and self
+          defence aspect of the art, this class is great for beginners but also very
+          useful for experienced students to hone in the details of techniques and
+          concepts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="titans">
+    <h1>Tuesday Titans Judo Comp Training</h1>
+    <div>
+      <Picture src={titans} formats={['avif', 'webp', 'png']}
+        width="1024" alt="Tuesday Titans Training"
+      />
+      <div>
+        <p>
+          A class tailored to competitors, consisting of sparring and simulated
+          competition rounds under a timer, or simulated scenarios designed to test your
+          knowledge, application, and quick thinking. In this class you will get more
+          time for randori, better understand the flow of competition, and its rules.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="open-mat">
+    <h1>Judo and Jiu Jitsu Open Training</h1>
+    <div>
+      <Picture src={openMat} formats={['avif', 'webp', 'png']}
+        width="1024" alt="Open Training"
+      />
+      <div>
+        <p>
+          Whether you are a Judo student or a Jiu Jitsu student or both, this session
+          is a great opportunity to do free practice with others. Many people use the
+          time to get some randori/rolling rounds (sparring) in, but you can also drill
+          techniques or work through concepts with other students.
+        </p>
+        <p>
+          We are quite liberal with our allowed techniques, but as always safety and the
+          welfare of your training partners is the number one priority.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="private">
+    <h1>Private Class</h1>
+    <div>
+      <Picture src={privateClass} formats={['avif', 'webp', 'png']}
+        width="1024" alt="Private Class"
+      />
+      <div>
+        <p>
+          Available on request only.
+        </p>
+        <p>
+          When you need to work on something specific or outside the standard class
+          structure we can work out a time together in which to focus on your needs. This
+          option has been taken up by both students of the club and visitors who wish to
+          focus more specifically on a goal.
+        </p>
+        <p>
+          We have experience working in larger classes as well as one-on-one settings, so
+          contact us if you wish to arrange a session. We strongly recommend bringing a
+          partner as it can be much easier to demonstrate and practice techniques in this
+          way (plus you can split the cost between each other if you wish).
+        </p>
+      </div>
+    </div>
+  </section>
 </Page>
+
+<style>
+section {
+  @apply flex flex-col gap-4 w-full max-w-4xl mx-auto mb-6 scroll-mt-32;
+
+  img {
+    @apply w-full mx-auto max-w-5xl lg:w-96;
+  }
+
+  h1 {
+    @apply text-center sm:text-left font-bold text-2xl;
+  }
+
+  h4 {
+    @apply font-bold;
+  }
+
+  > div {
+    @apply flex flex-col lg:flex-row gap-2 lg:gap-4;
+
+    div {
+      @apply flex flex-col gap-2;
+    }
+  }
+}
+</style>
