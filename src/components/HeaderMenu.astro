@@ -23,6 +23,7 @@ import ToggleTheme from './ToggleTheme.astro'
 
         <nav>
             <ul>
+                <li><a href="/classes">Classes</a></li>
                 <li><a href="/timetable">Timetable</a></li>
                 <li><a href="/locations">Locations</a></li>
                 <li><a href="/pricing">Pricing</a></li>
@@ -82,7 +83,7 @@ import ToggleTheme from './ToggleTheme.astro'
 <style>
     header-menu {
         @apply bg-bg-light dark:bg-bg-dark flex sticky top-0 z-30
-            justify-center md:justify-start p-4 h-28;
+            justify-center lg:justify-start p-4 h-20;
 
         .logo {
             @apply opacity-0 z-40 transition-opacity duration-[2000ms] delay-1000 w-0;
@@ -98,7 +99,7 @@ import ToggleTheme from './ToggleTheme.astro'
             @apply hidden;
 
             & ~ label {
-                @apply flex md:hidden absolute top-0 left-0 p-4 h-28 w-12 text-4xl flex-col justify-center items-center text-center z-50;
+                @apply flex lg:hidden absolute top-0 left-0 p-4 h-20 w-12 text-4xl flex-col justify-center items-center text-center z-50;
                 & .close {
                     @apply hidden;
                 }
@@ -115,22 +116,22 @@ import ToggleTheme from './ToggleTheme.astro'
                 }
 
                 & ~ nav {
-                    @apply max-md:block;
+                    @apply max-lg:block;
                 }
             }
         }
 
         & nav {
-            @apply hidden md:flex md:absolute md:right-0 md:top-0
-            md:h-full md:flex-col md:justify-end
-            text-xl md:py-2 md:px-4
+            @apply hidden lg:flex lg:absolute lg:right-0 lg:top-0
+            lg:h-full lg:flex-col lg:justify-end
+            text-xl lg:py-2 lg:px-4
 
-            max-md:bg-bg-light max-md:dark:bg-bg-dark max-md:h-[calc(100vh-7rem)] max-md:w-screen
-            max-md:absolute max-md:left-0 max-md:top-28
+            max-lg:bg-bg-light max-lg:dark:bg-bg-dark max-lg:h-[calc(100vh-7rem)] max-lg:w-screen
+            max-lg:absolute max-lg:left-0 max-lg:top-20
             ;
 
             & ul {
-                @apply flex flex-col md:flex-row gap-8 md:gap-4 max-md:p-8;
+                @apply flex flex-col lg:flex-row gap-8 lg:gap-4 max-lg:p-8;
             }
         }
     }
