@@ -5,30 +5,35 @@ import Leaflet from '../components/Leaflet.astro'
 import { Picture } from 'astro:assets'
 
 import kugatsuDojo from '../assets/images/photos/kugatsu_dojo.jpg'
+import niagaraParkDojo from '../assets/images/photos/niagara_park_dojo.jpg'
 ---
 <Page title="Locations">
   <section>
-      <h1>blahblah</h1>
-  </section>
-  <section>
     <h1>Erina (Kugatsu) Dojo</h1>
+    <Picture src={kugatsuDojo} formats={['avif', 'webp', 'png']}
+      width="1024" alt="Erina Dojo"
+    />
     <div class="location">
       <ul>
-          <li>
-              <h4>Address</h4>
-              <div>
-                  <p>The Lifestyle Building</p>
-                  <p>3 Chiltern Road</p>
-                  <p>Erina NSW 2250</p>
-              </div>
-          </li>
+        <li>
+          <h4>Features</h4>
+          <ul>
+            <li>66m<sup>2</sup> Floating Sprung Mats</li>
+            <li>Fully Air Conditioned Room</li>
+            <li>Showers and Changerooms</li>
+          </ul>
+        </li>
+        <li>
+          <h4>Address</h4>
+          <div>
+            <p>The Lifestyle Building</p>
+            <p>3 Chiltern Road</p>
+            <p>Erina NSW 2250</p>
+          </div>
+        </li>
       </ul>
       <div class="w-full flex flex-col gap-4">
-    	  <Picture src={kugatsuDojo} formats={['avif', 'webp', 'png']}
-          width="1024" alt="Judo Central Coast Logo"
-          class="w-full max-w-xl mx-auto"
-        />
-        <div class="w-full max-w-xl mx-auto aspect-video z-0">
+        <div class="w-full mx-auto aspect-video z-0">
           <Leaflet
             latitude="-33.42809"
             longitude="151.39542"
@@ -43,19 +48,30 @@ import kugatsuDojo from '../assets/images/photos/kugatsu_dojo.jpg'
   </section>
   <section>
     <h1>Niagara Park (Jita Kyoei) Dojo</h1>
+    <Picture src={niagaraParkDojo} formats={['avif', 'webp', 'png']}
+      width="1024" alt="Niagara Park Dojo"
+    />
     <div class="location">
       <ul>
-          <li>
-              <h4>Address</h4>
-              <div>
-                  <p>Niagara Park Stadium</p>
-                  <p>18 Washington Ave</p>
-                  <p>Niagara Park NSW 2250</p>
-              </div>
-          </li>
+        <li>
+          <h4>Features</h4>
+          <ul>
+            <li>99m<sup>2</sup> Mat Area</li>
+            <li>Fully Air Conditioned Room</li>
+            <li>Showers and Changerooms</li>
+          </ul>
+        </li>
+        <li>
+          <h4>Address</h4>
+          <div>
+            <p>Niagara Park Stadium</p>
+            <p>18 Washington Ave</p>
+            <p>Niagara Park NSW 2250</p>
+          </div>
+        </li>
       </ul>
       <div class="w-full">
-        <div class="w-full max-w-2xl mx-auto aspect-video z-0">
+        <div class="w-full mx-auto aspect-video z-0">
           <Leaflet
             latitude="-33.38366"
             longitude="151.35238"
@@ -78,6 +94,10 @@ a {
 section {
   @apply flex flex-col gap-4 w-full max-w-4xl mx-auto mb-6;
 
+  img {
+    @apply w-full mx-auto;
+  }
+
   h1 {
     @apply text-center sm:text-left font-bold text-2xl;
   }
@@ -85,22 +105,22 @@ section {
   .location {
     @apply w-full flex flex-col lg:flex-row gap-4;
 
-    ul {
-      @apply sm:ml-8 flex flex-col gap-6 sm:gap-4 lg:min-w-64;
+    > ul {
+      @apply flex flex-col gap-6 sm:gap-4 lg:min-w-72;
 
-      li {
-        @apply flex flex-col sm:flex-row gap-6 w-full;
+      > li {
+        @apply flex flex-col gap-4 w-full;
 
-        h2 {
-          @apply font-bold sm:flex-none sm:w-36 text-xl;
+        > h4 {
+          @apply font-bold sm:w-36 text-lg;
         }
 
-        div {
-          @apply flex-1 flex flex-col gap-2;
+        > div {
+          @apply ml-4 flex flex-col gap-2;
+        }
 
-          .price {
-            @apply font-bold text-xl;
-          }
+        > ul {
+          @apply list-disc ml-8 flex flex-col gap-2;
         }
       }
     }
