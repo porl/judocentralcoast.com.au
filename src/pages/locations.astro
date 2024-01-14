@@ -2,6 +2,9 @@
 import Page from '../layouts/Page.astro'
 
 import Leaflet from '../components/Leaflet.astro'
+import { Picture } from 'astro:assets'
+
+import kugatsuDojo from '../assets/images/photos/kugatsu_dojo.jpg'
 ---
 <Page title="Locations">
   <section>
@@ -20,15 +23,21 @@ import Leaflet from '../components/Leaflet.astro'
               </div>
           </li>
       </ul>
-      <div class="w-full max-w-xl mx-auto aspect-video">
-        <Leaflet
-          latitude="-33.42809"
-          longitude="151.39542"
-          zoom="17"
-          tileLayer="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-          marker="true"
+      <div class="w-full flex flex-col gap-4">
+    	  <Picture src={kugatsuDojo} formats={['avif', 'webp', 'png']}
+          width="1024" alt="Judo Central Coast Logo"
+          class="w-full max-w-xl mx-auto"
         />
+        <div class="w-full max-w-xl mx-auto aspect-video z-0">
+          <Leaflet
+            latitude="-33.42809"
+            longitude="151.39542"
+            zoom="17"
+            tileLayer="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+            marker="true"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -45,15 +54,17 @@ import Leaflet from '../components/Leaflet.astro'
               </div>
           </li>
       </ul>
-      <div class="w-full max-w-2xl mx-auto aspect-video">
-        <Leaflet
-          latitude="-33.38366"
-          longitude="151.35238"
-          zoom="17"
-          tileLayer="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-          marker="true"
-        />
+      <div class="w-full">
+        <div class="w-full max-w-2xl mx-auto aspect-video z-0">
+          <Leaflet
+            latitude="-33.38366"
+            longitude="151.35238"
+            zoom="17"
+            tileLayer="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+            marker="true"
+          />
+        </div>
       </div>
     </div>
   </section>
