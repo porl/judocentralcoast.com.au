@@ -4,14 +4,70 @@ import { Picture } from 'astro:assets'
 
 import Leader from '../layouts/Leader.astro'
 
+import kidsLine from '../assets/images/photos/kids_line.jpg'
+import tomoe from '../assets/images/photos/splash_kata.jpg'
+import beach from '../assets/images/photos/shane_smash_beach.jpg'
 import kugatsuLogo from '../assets/images/kugatsu.png'
 import jitakyoeiLogo from '../assets/images/jitakyoei.png'
 ---
 <Leader title="Home">
-    <div class="flex flex-row gap-12 my-4">
-    	<Picture src={kugatsuLogo} formats={['avif', 'webp', 'png']} width="256" alt="Judo Central Coast Logo" />
-    	<Picture src={jitakyoeiLogo} formats={['avif', 'webp', 'png']} width="256" alt="Judo Central Coast Logo" />
+  <section>
+    <Picture src={kidsLine} formats={['avif', 'webp', 'png']} width="1024" alt="Kids Line" />
+    <p>
+      Immerse yourself in the exciting fusion of Kugatsu Erina and Jita Kyoei Martial Arts Judo clubs as
+      we proudly unveil our newly united club!
+    </p>
+    <p>
+      Our approach blends the best of both worlds, offering a versatile martial arts experience that
+      emphasizes techniques, discipline, and a sense of community.
+    </p>
+    <p>
+      With expert guidance from our skilled instructors, our curriculum encompasses groundwork, throws,
+      and self-defense – creating a harmonious balance between strength and artistry.
+    </p>
+    <Picture src={tomoe} formats={['avif', 'webp', 'png']} width="1024" alt="Tomoe Nage Throw" />
+    <p>
+      Whether you're a seasoned martial artist or a newcomer eager to explore, our club provides a
+      welcoming space for personal growth and camaraderie. Join us in embracing this new chapter, where the
+      synergy of Jita Kyoei and Kugatsu Erina results in a unique martial arts journey tailored to the
+      diverse interests and aspirations of our members.
+    </p>
+    <Picture src={beach} formats={['avif', 'webp', 'png']} width="1024" alt="Beach Throw" />
+  </section>
+  <section>
+    <div class="logos">
+      <Picture src={kugatsuLogo} formats={['avif', 'webp', 'png']} width="256" alt="Kugatsu Logo" />
+      <Picture src={jitakyoeiLogo} formats={['avif', 'webp', 'png']} width="256" alt="Jita Kyoei Logo" />
     </div>
-    <h1 class="text-5xl text-primary text-center">Coming Soon</h1>
-    <p class="text-secondary text-xl text-center">For information please contact Shane Alvisio on 0410 044 205<br />or Paul Sheean on 0422 058 087</p>
+  </section>
 </Leader>
+
+<style>
+section {
+  @apply flex flex-col gap-4 w-full max-w-4xl mx-auto mb-6;
+
+  .logos {
+    @apply mx-auto grid grid-cols-2 gap-4 md:gap-8 lg:gap-12;
+  }
+
+  img {
+    @apply w-full mx-auto max-w-xl;
+  }
+
+  h1 {
+    @apply text-center sm:text-left font-bold text-2xl;
+  }
+
+  h4 {
+    @apply font-bold;
+  }
+
+  > div {
+    @apply flex flex-col lg:flex-row gap-2 lg:gap-4;
+
+    div {
+      @apply flex flex-col gap-2;
+    }
+  }
+}
+</style>
