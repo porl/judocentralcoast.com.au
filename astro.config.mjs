@@ -9,5 +9,6 @@ export default defineConfig({
   integrations: [tailwind()],
   adapter: node({
     mode: "standalone"
-  })
+  }),
+  server: {host: true},
 });
